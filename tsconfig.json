@@ -1,7 +1,10 @@
 {
   "compilerOptions": {
     "outDir": "./lib",
-    "rootDir": "./"
+    "rootDir": "./",
+    "lib": [
+      "ES2021.String"
+    ]
   },
   "include": ["src/**/*", "test/**/*"],
   "exclude": ["node_modules"]
