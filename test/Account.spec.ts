@@ -26,6 +26,11 @@ describe("basic demands of account kata", () => {
 
             assert.strictEqual(account.balance, expectedBalanceAfterWithdraw);
         })
+        it("should throw on negative amount", () => {
+            assert.throws(() => {
+                account.withdraw(-200.00)
+            }, RangeError);
+        })
     })
 
     describe("Deposits", () => {
@@ -39,6 +44,11 @@ describe("basic demands of account kata", () => {
             account.deposit(100.00);
 
             assert.strictEqual(account.balance, expectedBalanceAfterDeposit);
+        })
+        it("should throw on negative amount", () => {
+            assert.throws(() => {
+                account.deposit(-200.00)
+            }, RangeError);
         })
     })
 
