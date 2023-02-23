@@ -1,22 +1,22 @@
 export default class Account {
-    private _balance: number;
+    balance: number;
     private transactions: Transaction[];
 
     constructor(balance: number) {
-        this._balance = balance;
+        this.balance = balance;
     }
 
     deposit(amount: number) {
         if (amount <= 0) {
             throw new RangeError("Negative deposit amount");
         }
-        this._balance += amount;
+        this.balance += amount;
     }
     withdraw(amount: number) {
         if (amount <= 0) {
             throw new RangeError("Negative withdraw amount");
         }
-        this._balance -= amount;
+        this.balance -= amount;
     }
     printStatement(): string {
         return "";
