@@ -31,6 +31,15 @@ describe("basic demands of account kata", () => {
                 account.withdraw(-200.00)
             }, RangeError);
         })
+        it("should throw if amount > balance", () => {
+            let tooHighAmount = 100000.00;
+
+            assert.strictEqual((tooHighAmount > account.balance), true);
+            
+            assert.throws(() => {
+                account.withdraw(tooHighAmount)
+            }, Error);
+        })
     })
 
     describe("Deposits", () => {

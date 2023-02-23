@@ -17,6 +17,8 @@ export default class Account {
     withdraw(amount: number) {
         if (amount <= 0) {
             throw new RangeError("Negative withdraw amount");
+        } else if (amount > this.balance) {
+            throw new Error("Insufficient funds");
         }
         this.balance -= amount;
         this.logTransaction(new Transaction(this.getCurrentDate(), -amount, this.balance));
