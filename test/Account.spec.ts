@@ -53,21 +53,26 @@ describe("basic demands of account kata", () => {
         const expectedStatementAfterOneWithdrawalAndOneDeposit = 
             expectedStatementAfterOneWithdrawal +
             getTodayForTestTransactions() + "\t" + 
-            "200.00\t 600.00\n";
-
+            "200.00\t\t 600.00\n";
 
         it("should be able to print statements", () => {
             let actualStatement = account.printStatement();
 
             assert.strictEqual(actualStatement, expectedInitStatement);
         })
-
-        it("should print after a transaction", () => {
+        it("should print after a transaction (withdrawal)", () => {
             account.withdraw(100.00);
 
             let actualStatement = account.printStatement();
 
             assert.strictEqual(actualStatement, expectedStatementAfterOneWithdrawal);
+        })
+        it("should be able to deposit too", () => {
+            account.deposit(200.00);
+
+            let actualStatement = account.printStatement();
+
+            assert.strictEqual(actualStatement, expectedStatementAfterOneWithdrawalAndOneDeposit);
         })
     })
 })
