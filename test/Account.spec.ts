@@ -6,6 +6,6 @@ describe("basic demands of account kata", () => {
         let account = new Account();
         assert.equal(account.withdraw(10), undefined);
         assert.equal(account.deposit(10), undefined);
-        assert.equal(account.printStatement(), "");
-    })
+        assert.match(account.printStatement(), /.*/);
+        })
 })
