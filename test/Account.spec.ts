@@ -41,4 +41,17 @@ describe("basic demands of account kata", () => {
             assert.strictEqual(account.balance, expectedBalanceAfterDeposit);
         })
     })
+
+    describe("Statements", () => {
+        let account = new Account(500.00);
+        const expectedInitStatement = "No transactions";
+        const expectedFirstStatement = "";
+        const expectedSecondStatement = "";
+
+        it("should be able to print statements", () => {
+            const actualStatement = account.printStatement();
+
+            assert.strictEqual(actualStatement, expectedInitStatement);
+        })
+    })
 })

@@ -4,6 +4,7 @@ export default class Account {
 
     constructor(balance: number) {
         this.balance = balance;
+        this.transactions = new Array<Transaction>();
     }
 
     deposit(amount: number) {
@@ -19,7 +20,9 @@ export default class Account {
         this.balance -= amount;
     }
     printStatement(): string {
-        return "";
+        if (this.transactions.length < 1) {
+            return "No transactions"
+        }
     }
 
     private logTransaction(t: Transaction) {
