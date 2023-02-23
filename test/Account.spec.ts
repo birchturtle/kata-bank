@@ -44,14 +44,35 @@ describe("basic demands of account kata", () => {
 
     describe("Statements", () => {
         let account = new Account(500.00);
-        const expectedInitStatement = "No transactions";
-        const expectedFirstStatement = "";
-        const expectedSecondStatement = "";
+        let expectedInitStatement = "No transactions";
+        let expectedStatementAfterOneWithdrawal = 
+            "Date\t\t Amount\t\t Balance\n" +
+            getTodayForTestTransactions() + "\t" + 
+            "-100.00\t\t 400.00\n";
+
+        const expectedStatementAfterOneWithdrawalAndOneDeposit = 
+            expectedStatementAfterOneWithdrawal +
+            getTodayForTestTransactions() + "\t" + 
+            "200.00\t 600.00\n";
+
 
         it("should be able to print statements", () => {
-            const actualStatement = account.printStatement();
+            let actualStatement = account.printStatement();
 
             assert.strictEqual(actualStatement, expectedInitStatement);
         })
+
+        it("should print after a transaction", () => {
+            account.withdraw(100.00);
+
+            let actualStatement = account.printStatement();
+
+            assert.strictEqual(actualStatement, expectedStatementAfterOneWithdrawal);
+        })
     })
 })
+
+function getTodayForTestTransactions(): string {
+    let today = new Date();
+    return today.getDate().toString() + "." + (today.getMonth() + 1).toString() + "." + today.getFullYear().toString();
+}
