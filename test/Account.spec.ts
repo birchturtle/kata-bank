@@ -6,7 +6,7 @@ describe("basic demands of account kata", () => {
     it("should have correct starting balance", () => {
         assert.equal(account.balance, 500.00);
     })
-    
+
     it("should respond to these three methods", () => {
 
         assert.equal(account.withdraw(10.00), undefined);
@@ -25,6 +25,20 @@ describe("basic demands of account kata", () => {
             account.withdraw(200.00);
 
             assert.strictEqual(account.balance, expectedBalanceAfterWithdraw);
+        })
+    })
+
+    describe("Deposits", () => {
+
+        let account = new Account(500.00);
+
+        it("should deposit correct amount", () => {
+            assert.strictEqual(account.balance, 500.00);
+            const expectedBalanceAfterDeposit = 600.00;
+
+            account.deposit(100.00);
+
+            assert.strictEqual(account.balance, expectedBalanceAfterDeposit);
         })
     })
 })
